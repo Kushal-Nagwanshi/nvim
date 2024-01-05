@@ -52,10 +52,6 @@ local M =
                 noice = true,
             },
         },
-        --	config = function(plugin)
-        --		require("catppuccin").setup(plugin.opts)
-        --		vim.cmd("colorscheme catppuccin")
-        --	end,
     },
 }
 
