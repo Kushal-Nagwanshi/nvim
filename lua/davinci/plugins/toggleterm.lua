@@ -7,7 +7,7 @@ local M = {
     "akinsho/toggleterm.nvim",
     keys = {
         { "<leader>ter", ":ToggleTerm direction=float<CR>",      desc = "Toggle terminal float" },
-        { "<C-`>",       ":ToggleTerm<CR>",                      desc = "Toggle terminal float" },
+        { "<C-`>",       ":ToggleTerm<CR>",                      desc = "Toggle terminal" },
         { "<leader>th",  ":ToggleTerm direction=horizontal<CR>", desc = "Toggle terminal horizontal" },
         { "<leader>gl",  desc = "Toggle lazygit" },
     },
