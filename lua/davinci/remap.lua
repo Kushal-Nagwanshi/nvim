@@ -18,8 +18,6 @@ local mappings = {
         [":"] = ";",
         -- :Ex is for opening default file Explorer in vim which is netrw
         ["<leader>pv"] = "<cmd>Ex<cr>",
-        -- good for quick help on some stuff
-        ["<leader>hp"] = ":h<Space>",
         --I don't ever seem to use U's default so I am trying out this | got this idea
         --"from Helix, this was pretty intuitive
         ["U"] = "<C-r>",
