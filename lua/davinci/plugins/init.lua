@@ -43,7 +43,7 @@ local M =
 	},
 	{
 		"xiyaowong/transparent.nvim",
-		Lazy  = false
+		lazy = false,
 	},
 	--color-highlights
 	--[[
