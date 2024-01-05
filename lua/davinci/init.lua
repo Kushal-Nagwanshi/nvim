@@ -1,16 +1,21 @@
-require("davinci.set")
 require("davinci.remap")
-
-local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup('davinci', {})
-
-local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
+require("davinci.set")
+require("davinci.usercommands")
+require("davinci.plugins-switch")
+require("davinci.lazy")
 
 function R(name)
     require("plenary.reload").reload_module(name)
 end
 
+local augroup = vim.api.nvim_create_augroup
+local ThePrimeagenGroup = augroup('ThePrimeagenGroup', {})
+
+local autocmd = vim.api.nvim_create_autocmd
+local yank_group = augroup('HighlightYank', {})
+
+
+-- Highlights after Copying/Yanking.
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -22,12 +27,9 @@ autocmd('TextYankPost', {
     end,
 })
 
+-- Automatically removes trailing whitespaces after saving a file
 autocmd({"BufWritePre"}, {
     group = ThePrimeagenGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
-
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
