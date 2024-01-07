@@ -18,4 +18,5 @@ plugin_enabled = {
     refactoring = true,
     nvim_surround = true,
     nvim_highlight_colors = true,
+    bigfile = true,
 }

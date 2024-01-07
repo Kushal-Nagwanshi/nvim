@@ -1,6 +1,7 @@
 require("davinci.remap")
 require("davinci.set")
 require("davinci.usercommands")
+require("davinci.largefiles")
 require("davinci.plugins-switch")
 require("davinci.lazy")
 
