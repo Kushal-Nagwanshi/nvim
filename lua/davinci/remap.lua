@@ -78,17 +78,24 @@ local mappings = {
         ["<C-w>|"] = "<cmd>vsplit<CR>",
         ----------------------------LaTex--------------------------------------
 
-        ["<leader>latex"] = ":tabnew<CR>:terminal texify --pdf --engine=luahbtex --synctex=1 --clean ./pdf.tex<CR><Esc>:tabprev<CR>",
+        ["<leader>latex"] =
+        ":tabnew<CR>:terminal texify --pdf --engine=luahbtex --synctex=1 --clean ./pdf.tex<CR><Esc>:tabprev<CR>",
 
     },
     v = {
         [";"] = ":",
         [":"] = ";",
-        ["J"] = "<Esc><cmd>m '>+1<CR>gv=gv", -- see :h <cmd> for
-        ["K"] = "<Esc><cmd>m '<-2<CR>gv=gv", -- why <Esc> precedes <cmd>
+
+        [">"] = "<gv",
+        ["<"] = ">gv",
+
+        ["J"] = ":m '>+1<CR>gv=gv", -- see :h <cmd> for
+        ["K"] = ":m '<-2<CR>gv=gv", -- why <Esc> precedes <cmd>
+
         ["<leader>d"] = [["_d]],
         ["<leader>p"] = [["*p]],
         ["<leader>y"] = [["*y]],
+
         ["<A-d>"] = "<Esc>",
         --["<leader>s"] = [["0y:%s/\<C-r>0/<C-r>0/gI<Left><Left><Left>]],
     },
