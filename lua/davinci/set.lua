@@ -20,6 +20,8 @@ local settings = {
     smartindent = true,
 
     wrap = false,
+    list = false, -- if list is set true the below chars will be displayed.
+    listchars = { eol = "↲", tab = "▸ ", trail = "·" },
 
     swapfile = false,
     backup = false,
