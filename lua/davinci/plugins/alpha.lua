@@ -18,10 +18,11 @@ function M.config()
 		end
 
 		local function footer()
+                local pwd = vim.fn.getcwd()
 				local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
 				local version = vim.version()
 				local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
-				return datetime .. nvim_version_info
+				return pwd .."\n".. datetime .. nvim_version_info
 		end
 
 		local logo = {
