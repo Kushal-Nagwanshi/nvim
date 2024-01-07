@@ -111,6 +111,11 @@ local mappings = {
         ["<leader>p"] = [["_dP]],
         ["J"] = "<Esc><cmd>m '>+1<CR>gv=gv", -- see :h <cmd> for,
         ["K"] = "<Esc><cmd>m '<-2<CR>gv=gv", -- why <Esc> precedes <cmd>
+    },
+    --command mode
+    c = {
+        ["<C-h>"] = "<Left>",
+        ["<C-l>"] = "<Right>",
     }
 }
 
