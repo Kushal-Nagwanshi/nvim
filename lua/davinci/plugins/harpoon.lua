@@ -15,10 +15,10 @@ function M.config()
     vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 
     -- sets Alt + {h,j,k,l} to switch between files in Harpoon
-    vim.keymap.set("n", "<A-h>", function() ui.nav_file(1) end)
-    vim.keymap.set("n", "<A-j>", function() ui.nav_file(2) end)
-    vim.keymap.set("n", "<A-k>", function() ui.nav_file(3) end)
-    vim.keymap.set("n", "<A-l>", function() ui.nav_file(4) end)
+    vim.keymap.set("n", "<A-1>", function() ui.nav_file(1) end)
+    vim.keymap.set("n", "<A-2>", function() ui.nav_file(2) end)
+    vim.keymap.set("n", "<A-3>", function() ui.nav_file(3) end)
+    vim.keymap.set("n", "<A-4>", function() ui.nav_file(4) end)
 end
 
 if plugin_enabled['harpoon'] == true then

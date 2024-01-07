@@ -28,18 +28,23 @@ local mappings = {
         --" quit without saving
         ["<leader>Q"] = "<cmd>q!<cr>",
         ---------------------Quick File Access-------------------------------
-        ["<leader>vim"] = "<cmd>e ".. home .."/.vimrc<cr>",
-        ["<leader>tmux"] = "<cmd>e ".. home .."/.tmux.conf<cr>",
-        ["<leader>bash"] = "<cmd>e ".. home .."/.bashrc<cr>",
-        ["<leader>todo"] = "<cmd>e ".. home .."/.Todo_stuff.md<cr>",
-        ["<leader>lazy"] = "<cmd>e ".. home .."/.config/nvim/lua/davinci/lazy.lua<cr>",
+        ["<leader>vim"] = "<cmd>e " .. home .. "/.vimrc<cr>",
+        ["<leader>tmux"] = "<cmd>e " .. home .. "/.tmux.conf<cr>",
+        ["<leader>bash"] = "<cmd>e " .. home .. "/.bashrc<cr>",
+        ["<leader>todo"] = "<cmd>e " .. home .. "/.Todo_stuff.md<cr>",
+        ["<leader>lazy"] = "<cmd>e " .. home .. "/.config/nvim/lua/davinci/lazy.lua<cr>",
         -- TODO also change the pwd
-        ["<leader>nvim"] = "<cmd>e ".. home .."/.config/nvim/lua/davinci/remap.lua<cr>",
+        ["<leader>nvim"] = "<cmd>e " .. home .. "/.config/nvim/lua/davinci/remap.lua<cr>",
 
         ---------------------------------Tab related----------------------------------
         ["<leader><Tab>"] = "<cmd>tabnew<cr>",
         ["<M-9>"] = "<cmd>tabprev<cr>", -- Alt 9
         ["<M-0>"] = "<cmd>tabnext<cr>", -- Alt 0
+
+        ["<M-h>"] = "<C-w>h",
+        ["<M-j>"] = "<C-w>j",
+        ["<M-k>"] = "<C-w>k",
+        ["<M-l>"] = "<C-w>l",
 
         ["<A-d>"] = "a",
         ["<C-d>"] = "<C-d>zz",
@@ -93,12 +98,12 @@ local mappings = {
     },
     t = {
         -- Terminal window navigation
-        ["<C-w>h"] = "<C-\\><C-N><C-w>h",
-        ["<C-w>j"] = "<C-\\><C-N><C-w>j",
-        ["<C-w>k"] = "<C-\\><C-N><C-w>k",
-        ["<C-w>l"] = "<C-\\><C-N><C-w>l",
+        ["<M-h>"] = "<C-\\><C-N><C-w>h",
+        ["<M-j>"] = "<C-\\><C-N><C-w>j",
+        ["<M-k>"] = "<C-\\><C-N><C-w>k",
+        ["<M-l>"] = "<C-\\><C-N><C-w>l",
         ---------------------------------Tab related----------------------------------
-        ["<leader><Tab>"] = "<cmd>tabnew<cr>",
+
         ["<M-9>"] = "<cmd>tabprev<cr>", -- Alt 9
         ["<M-0>"] = "<cmd>tabnext<cr>", -- Alt 0
     },
