@@ -62,7 +62,7 @@ local mappings = {
         ["<leader>d"] = [["_d]],
 
         ["Q"] = "<nop>",
-        ["<C-f>"] = "<cmd>silent !tmux neww ".. home .."/.dotfiles/tmux-sessionizer<CR>",
+        ["<C-f>"] = "<cmd>silent !tmux neww " .. home .. "/.dotfiles/tmux-sessionizer<CR>",
         ["<leader>f"] = vim.lsp.buf.format,
         ["<C-k>"] = "<cmd>cnext<CR>zz",
         ["<C-j>"] = "<cmd>cprev<CR>zz",
@@ -137,7 +137,6 @@ end
 -----------------------------------OS Specific---------------------------------
 if vim.fn.has('win32')
 then
-    vim.keymap.set("n","<leader>lazy", "<cmd>e ~/AppData/Local/nvim/lua/davinci/lazy.lua<cr>")
-    vim.keymap.set("n","<leader>nvim", "<cmd>e ~/AppData/Local/nvim/lua/davinci/remap.lua<cr>")
+    vim.keymap.set("n", "<leader>lazy", "<cmd>e ~/AppData/Local/nvim/lua/davinci/lazy.lua<cr>")
+    vim.keymap.set("n", "<leader>nvim", "<cmd>e ~/AppData/Local/nvim/lua/davinci/remap.lua<cr>")
 end
-
