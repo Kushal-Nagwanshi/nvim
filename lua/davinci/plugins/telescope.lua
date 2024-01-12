@@ -17,6 +17,7 @@ function M.config()
         builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
     vim.keymap.set('n', '<leader>hp', builtin.help_tags, {})
+    vim.keymap.set('n', '<leader>tr', builtin.resume,{desc="Resume the previous Telescope state"})
 end
 
 if plugin_enabled['telescope'] == true then

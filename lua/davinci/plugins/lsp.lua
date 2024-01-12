@@ -28,6 +28,7 @@ function M.config()
 		lsp.preset("recommended")
 
 		lsp.ensure_installed({
+            'clangd',
 				--'tsserver',
 				-- 'rust_analyzer',
 		})

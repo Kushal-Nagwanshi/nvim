@@ -12,6 +12,13 @@ if (home == nil) then
 end
 
 local mappings = {
+    vi = {
+        -- Using Alt Gr characters, as i don't need to use them.
+        -- Experimental
+        ["ē"] = "<Esc>",
+        ["ī"] = "<Esc>",
+        ["ḍ"] = "<Esc>",
+    },
     n = {
         -------------------------Life hacks------------------------------------
         [";"] = ":",
@@ -21,6 +28,7 @@ local mappings = {
         --I don't ever seem to use U's default so I am trying out this | got this idea
         --"from Helix, this was pretty intuitive
         ["U"] = "<C-r>",
+        ["ū"] = "U",
         --" much easier for saving which has to be done quite often.
         ["<leader>w"] = "<cmd>w<cr>",
         --" much easier for quiting
@@ -33,8 +41,8 @@ local mappings = {
         ["<leader>bash"] = "<cmd>e " .. home .. "/.bashrc<cr>",
         ["<leader>todo"] = "<cmd>e " .. home .. "/.Todo_stuff.md<cr>",
         ["<leader>lazy"] = "<cmd>e " .. home .. "/.config/nvim/lua/davinci/lazy.lua<cr>",
-        -- TODO also change the pwd
-        ["<leader>nvim"] = "<cmd>e " .. home .. "/.config/nvim/lua/davinci/remap.lua<cr>",
+        -- DONE also change the pwd
+        ["<leader>nvim"] = "<cmd>e " .. home .. "/.config/nvim/lua/davinci/remap.lua<cr>".."<cmd>cd " .. home .. "/.config/nvim/lua/davinci<cr>" ,
 
         ---------------------------------Tab related----------------------------------
         ["<leader><Tab>"] = "<cmd>tabnew<cr>",
@@ -46,7 +54,6 @@ local mappings = {
         ["<M-k>"] = "<C-w>k",
         ["<M-l>"] = "<C-w>l",
 
-        ["<A-d>"] = "a",
         ["<C-d>"] = "<C-d>zz",
         ["<C-u>"] = "<C-u>zz",
         ["J"] = "mzJ`z",
@@ -69,18 +76,19 @@ local mappings = {
         ["<leader>k"] = "<cmd>lnext<CR>zz",
         ["<leader>j"] = "<cmd>lprev<CR>zz",
 
+        -- <Alt Gr-s>
+        ["ś"] = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
         ["<leader>ss"] = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 
         ["<leader>mr"] = "<cmd>CellularAutomaton make_it_rain<CR>",
         ["<leader><leader>"] = function() vim.cmd("so") end,
 
         ["<C-w>-"] = "<cmd>split<CR>",
-        ["<C-w>|"] = "<cmd>vsplit<CR>",
+        ["<C-w>\\"] = "<cmd>vsplit<CR>",
         ----------------------------LaTex--------------------------------------
-
-        ["<leader>latex"] =
-        ":tabnew<CR>:terminal texify --pdf --engine=luahbtex --synctex=1 --clean ./pdf.tex<CR><Esc>:tabprev<CR>",
-
+        -- if you want to do this without the ToggleTerminal plugin
+        --["<leader>latex"] = ":tabnew<CR>:terminal texify --pdf --engine=luahbtex --synctex=1 --clean ./pdf.tex<CR><Esc>:tabprev<CR>",
+        ["<leader>tex"] = [[:TermExec cmd="texify --pdf --engine=luahbtex --synctex=1 --clean %"<CR><C-w>k]],
     },
     v = {
         [";"] = ":",
@@ -96,12 +104,13 @@ local mappings = {
         ["<leader>p"] = [["*p]],
         ["<leader>y"] = [["*y]],
 
-        ["<A-d>"] = "<Esc>",
         --["<leader>s"] = [["0y:%s/\<C-r>0/<C-r>0/gI<Left><Left><Left>]],
     },
     i = {
         -- This is going to get me cancelled
         ["<C-c>"] = "<Esc>",
+        ["<C-h>"] = "<Left>",
+        ["<C-l>"] = "<Right>"
     },
     t = {
         -- Terminal window navigation
@@ -116,8 +125,8 @@ local mappings = {
     },
     x = {
         ["<leader>p"] = [["_dP]],
-        ["J"] = "<Esc><cmd>m '>+1<CR>gv=gv", -- see :h <cmd> for,
-        ["K"] = "<Esc><cmd>m '<-2<CR>gv=gv", -- why <Esc> precedes <cmd>
+        ["J"] = ":m '>+1<CR>gv-gv",
+        ["K"] = ":m '<-2<CR>gv-gv",
     },
     --command mode
     c = {
@@ -126,14 +135,14 @@ local mappings = {
     }
 }
 
-for mode, mapping in pairs(mappings) do
-    for before, after in pairs(mapping) do
-        vim.keymap.set(mode, before, after)
+for modes, mapping in pairs(mappings) do
+    for i = 1, #modes do
+        local mode = string.sub(modes, i, i)
+        for before, after in pairs(mapping) do
+            vim.keymap.set(mode, before, after)
+        end
     end
 end
-
---vim.keymap.set("x", "J", ":m '>+1<CR>gv-gv")
---vim.keymap.set("x", "K", ":m '<-2<CR>gv-gv")
 
 -------------------------------------------------------------------------------
 if vim.fn.has('gui_running')
@@ -145,5 +154,5 @@ end
 if vim.fn.has('win32')
 then
     vim.keymap.set("n", "<leader>lazy", "<cmd>e ~/AppData/Local/nvim/lua/davinci/lazy.lua<cr>")
-    vim.keymap.set("n", "<leader>nvim", "<cmd>e ~/AppData/Local/nvim/lua/davinci/remap.lua<cr>")
+    vim.keymap.set("n","<leader>nvim" , "<cmd>e ~/AppData/Local/nvim/lua/davinci/remap.lua<cr>".."<cmd>cd ~/AppData/Local/nvim/lua/davinci<cr>")
 end
