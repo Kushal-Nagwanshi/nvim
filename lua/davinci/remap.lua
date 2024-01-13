@@ -3,6 +3,7 @@
 -- Always set your leader and local leader on the top to avoid getting frustrated
 -- on why they didn't work.
 -- <cmd> has better interaction with folke/noice-nvim
+local xdg_config_home = os.getenv('xdg_config_home')
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
@@ -37,13 +38,13 @@ local mappings = {
         ["<leader>Q"] = "<cmd>q!<cr>",
         ---------------------Quick File Access-------------------------------
         ["<leader>vim"] = "<cmd>e " .. home .. "/.vimrc<cr>",
-        ["<leader>tmux"] = "<cmd>e " .. home .. "/.tmux.conf<cr>",
+        ["<leader>tmux"] = "<cmd>e " .. home  .. "/.tmux.conf<cr>",
         ["<leader>bash"] = "<cmd>e " .. home .. "/.bashrc<cr>",
         ["<leader>todo"] = "<cmd>e " .. home .. "/.Todo_stuff.md<cr>",
-        ["<leader>lazy"] = "<cmd>e " .. home .. "/.config/nvim/lua/davinci/lazy.lua<cr>",
+        ["<leader>lazy"] = "<cmd>e " .. xdg_config_home .. "/nvim/lua/davinci/lazy.lua<cr>",
         -- DONE also change the pwd
-        ["<leader>nvim"] = "<cmd>e " .. home .. "/.config/nvim/lua/davinci/remap.lua<cr>".."<cmd>cd " .. home .. "/.config/nvim/lua/davinci<cr>" ,
-
+        ["<leader>nvim"] = "<cmd>e " .. xdg_config_home .. "/nvim/lua/davinci/remap.lua<cr>".."<cmd>cd " .. xdg_config_home .. "/nvim<cr>" ,
+        ["<leader>zter"] = "<cmd>e " .. xdg_config_home .. "/wezterm/wezterm.lua<cr>".."<cmd>cd " .. xdg_config_home .. "/wezterm<cr>" ,
         ---------------------------------Tab related----------------------------------
         ["<leader><Tab>"] = "<cmd>tabnew<cr>",
         ["<M-9>"] = "<cmd>tabprev<cr>", -- Alt 9
@@ -73,8 +74,9 @@ local mappings = {
         ["<leader>f"] = vim.lsp.buf.format,
         ["<C-k>"] = "<cmd>cnext<CR>zz",
         ["<C-j>"] = "<cmd>cprev<CR>zz",
-        ["<leader>k"] = "<cmd>lnext<CR>zz",
-        ["<leader>j"] = "<cmd>lprev<CR>zz",
+        --not using location list as for now ...
+        --["<leader>k"] = "<cmd>lnext<CR>zz",
+        --["<leader>j"] = "<cmd>lprev<CR>zz",
 
         -- <Alt Gr-s>
         ["ś"] = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
@@ -94,8 +96,8 @@ local mappings = {
         [";"] = ":",
         [":"] = ";",
 
-        [">"] = "<gv",
-        ["<"] = ">gv",
+        [">"] = ">gv",
+        ["<"] = "<gv",
 
         ["J"] = ":m '>+1<CR>gv=gv", -- see :h <cmd> for
         ["K"] = ":m '<-2<CR>gv=gv", -- why <Esc> precedes <cmd>
@@ -109,8 +111,11 @@ local mappings = {
     i = {
         -- This is going to get me cancelled
         ["<C-c>"] = "<Esc>",
+
         ["<C-h>"] = "<Left>",
-        ["<C-l>"] = "<Right>"
+        ["<C-l>"] = "<Right>",
+        --["<C-j>"] = "<Down>",
+        --["<C-k>"] = "<Up>",
     },
     t = {
         -- Terminal window navigation
@@ -132,6 +137,8 @@ local mappings = {
     c = {
         ["<C-h>"] = "<Left>",
         ["<C-l>"] = "<Right>",
+        ["<C-j>"] = "<Down>",
+        ["<C-k>"] = "<Up>",
     }
 }
 
@@ -151,8 +158,8 @@ then
 end
 
 -----------------------------------OS Specific---------------------------------
-if vim.fn.has('win32')
-then
-    vim.keymap.set("n", "<leader>lazy", "<cmd>e ~/AppData/Local/nvim/lua/davinci/lazy.lua<cr>")
-    vim.keymap.set("n","<leader>nvim" , "<cmd>e ~/AppData/Local/nvim/lua/davinci/remap.lua<cr>".."<cmd>cd ~/AppData/Local/nvim/lua/davinci<cr>")
-end
+--if vim.fn.has('win32')
+--then
+--    vim.keymap.set("n", "<leader>lazy", "<cmd>e ~/AppData/Local/nvim/lua/davinci/lazy.lua<cr>")
+--    vim.keymap.set("n","<leader>nvim" , "<cmd>e ~/AppData/Local/nvim/lua/davinci/remap.lua<cr>".."<cmd>cd ~/AppData/Local/nvim/lua/davinci<cr>")
+--end

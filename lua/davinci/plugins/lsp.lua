@@ -42,23 +42,22 @@ function M.config()
 		local cmp_action = require('lsp-zero').cmp_action()
 
 		local cmp_mappings = lsp.defaults.cmp_mappings({
+                ["<CR>"] = cmp.config.disable,
 				['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
 				['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
 
-				--['<C-f>'] = cmp_action.luasnip_jump_forward(),
-				--['<C-b>'] = cmp_action.luasnip_jump_backward(),
-
-				['<Tab>'] = cmp_action.luasnip_jump_forward(),
-				['<S-Tab>'] = cmp_action.luasnip_jump_backward(),
+                ['<A-l>'] = cmp_action.luasnip_jump_forward(),
+                ['<A-h>'] = cmp_action.luasnip_jump_backward(),
 
 				['<C-o>'] = cmp.mapping.confirm({ select = true }),
+				['<A-o>'] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
 		})
 
-		--  cmp_mappings['<Tab>'] = nil
-		--  cmp_mappings['<S-Tab>'] = nil
+		cmp_mappings['<Tab>'] = nil
+		cmp_mappings['<S-Tab>'] = nil
 
-		lsp.setup_nvim_cmp({
+        lsp.setup_nvim_cmp({
 				mapping = cmp_mappings
 		})
 
@@ -79,8 +78,8 @@ function M.config()
 				vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 				vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
 				vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-				vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-				vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+				vim.keymap.set("n", "<leader>j", function() vim.diagnostic.goto_next() end, opts)
+				vim.keymap.set("n", "<leader>k", function() vim.diagnostic.goto_prev() end, opts)
 				vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
 				vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
 				vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
